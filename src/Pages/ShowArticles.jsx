@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router';
 import Article from '../Components/Article';
 import { GetArtcileAPI } from '../Services/API';
 import {

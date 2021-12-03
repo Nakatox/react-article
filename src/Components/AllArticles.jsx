@@ -19,7 +19,6 @@ const AllArticles = (props) => {
     }
     useEffect(() => {
         getArticles()
-        console.log(articles);
     }, [props])
 
   

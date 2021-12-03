@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useForm} from "react-hook-form";
 import { EditUserPasswordAPI } from '../Services/API';
 
@@ -8,12 +8,11 @@ const EditPassordUser = () => {
 
     const editUserPassword = async (data)=> {
         let response = await EditUserPasswordAPI(data)
-        console.log(data);
-        // if(response.status === 200){
+        if(response.status === 200){
             
-        // }else if (response.status === 400){
+        }else if (response.status === 400){
 
-        // }
+        }
     }
     return (
         <div className="password">

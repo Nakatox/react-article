@@ -24,7 +24,7 @@ const Articles = () => {
         option.push(value)
     });
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit } = useForm();
     const onSubmit = async (data)=> {
         let response = await CreateArtcileAPI({"title":data.title, "content":data.content,"article_category_id":idCategory})
         if(response.status === 200){

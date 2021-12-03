@@ -1,4 +1,4 @@
-import React, {createContext, useState, useRef, useEffect} from 'react'
+import React, {createContext, useState, useEffect} from 'react'
 import { getToken, GetUserInfoAPI, GetArtcileCategoriesAPI } from '../Services/API'
 
 export const GarbageContext = createContext()
@@ -12,7 +12,7 @@ export const GarbageProvider = (props) => {
 
     const getInfosUser = async () => {
         let token = getToken()
-        if (token != ""){
+        if (token !== ""){
             let infosUser = await GetUserInfoAPI(token)
             setUserInfos(infosUser.data);
         }
