@@ -5,7 +5,28 @@ import { getToken } from '../Services/API'
 import {useNavigate } from "react-router-dom";
 import styled, { css } from 'styled-components'
 
+const HeaderS = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+background-color: blueviolet;
+color: white;
+padding: 10px 30px;
+`
+const Container = styled.div`
+display: flex;
+flex-direction: row;
+width: 20vw;
+justify-content: space-between;
+`
 
+const Text = styled.div`
+& > a{
+    text-decoration: none;
+    color: white;
+    text-decoration: underline;
+}
+`
 export const Header = () => {
     let naviguate = useNavigate()
 
@@ -16,35 +37,31 @@ export const Header = () => {
         naviguate('/login')
     }
 
-   
-    const Container = styled.div`
-        display: flex;
-        flex-direction: row;
-        width: 20vw;
-        justify-content: space-between;
-        `
-
     if (getToken()){
         return (
-            <Container>
+            <HeaderS>
                 <Container className="header_menu" style={{marginRight:'20px'}}>
-                    <p style={{cursor:'pointer', textDecorationLine:'underline', color:'blue'}} onClick={()=>{logout()}}>Logout</p>
-                    <p><NavLink to="/home">Home</NavLink></p>
-                    <p><NavLink to="/articles">Articles</NavLink></p>
+                    <Text><a onClick={()=>{logout()}}>Logout</a></Text>
+                    <Text><NavLink to="/home">Home</NavLink></Text>
+                    <Text><NavLink to="/articles">Articles</NavLink></Text>
                 </Container>
                 <Container className="user_infos">
-                    <p>{userInfos.firstname}</p>
-                    <p>{userInfos.lastname}</p>
-                    <p><NavLink to="user/edit">Edit</NavLink></p>
+                    <Text>{userInfos.firstname}</Text>
+                    <Text>{userInfos.lastname}</Text>
+                    <Text><NavLink to="user/edit">Edit</NavLink></Text>
                 </Container>
-            </Container>
+            </HeaderS>
         )
     }else{
         return (
-            <Container className="header_menu">
-                <p><NavLink to="/login">Login</NavLink></p>
-                <p><NavLink to="/register">Register</NavLink></p>
-          </Container>
+            <HeaderS>
+                <Container className="header_menu">
+                    <Text><NavLink to="/login">Login</NavLink></Text>
+                    <Text><NavLink to="/register">Register</NavLink></Text>
+                    <Text><NavLink to="/home">Home</NavLink></Text>
+                    <Text><NavLink to="/articles">Articles</NavLink></Text>
+            </Container>
+          </HeaderS>
         )
     }
     

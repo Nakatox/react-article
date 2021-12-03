@@ -29,7 +29,7 @@ export const GarbageProvider = (props) => {
     }, [])
 
     return (
-        <GarbageContext.Provider value={{userInfos, articlesCategory}}>
+        <GarbageContext.Provider value={{userInfos,setUserInfos, articlesCategory}}>
             {props.children}
         </GarbageContext.Provider>
     )

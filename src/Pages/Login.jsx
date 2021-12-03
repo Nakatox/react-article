@@ -1,18 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm} from "react-hook-form";
 import {useNavigate } from "react-router-dom";
-import { LoginAPI } from '../Services/API';
+import { GarbageContext } from '../Provider/GarbageProvider';
+import { GetUserInfoAPI, LoginAPI } from '../Services/API';
 
 
 
 const Login = () => {
 
+    const {setUserInfos} = useContext(GarbageContext)
+
+
     let naviguate = useNavigate()
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = async (data)=> {
         let response = await LoginAPI(data)
         if(response.status === 200){
             localStorage.setItem('token', response.data.token);
+            let infosUser = await GetUserInfoAPI(response.data.token)
+            setUserInfos(infosUser.data);
             naviguate('/home')
         }else if (response.status === 400){
 

@@ -24,6 +24,7 @@ const EditPassordUser = () => {
                     <input type="password" {...register("password_new", {required:true})}/>
                     <p>New Password Verif :</p>
                     <input type="password" {...register("password_new_verif", {required:true})}/>
+                    <br />
                     <input type="submit" value="Change password" />
 
                     {errors.password_old && <span>This field is required</span>}

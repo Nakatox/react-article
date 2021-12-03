@@ -4,7 +4,11 @@ import AllArticles from '../Components/AllArticles'
 import { CreateArtcileAPI, getToken } from '../Services/API'
 import Select from 'react-select'
 import { GarbageContext } from '../Provider/GarbageProvider'
+import styled from 'styled-components'
 
+const Container = styled.div`
+margin: 30px;
+`
 
 const Articles = () => {
     const [limit, setlimit] = useState(20)
@@ -30,7 +34,7 @@ const Articles = () => {
         }
     }
     return (
-        <div>
+        <Container>
             {getToken() && 
                 <div>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -52,7 +56,7 @@ const Articles = () => {
             <div>
                 <AllArticles limit={limit} offset={offset}></AllArticles>
             </div>
-        </div>
+        </Container>
     )
 }
 

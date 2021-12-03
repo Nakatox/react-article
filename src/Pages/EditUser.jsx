@@ -1,20 +1,29 @@
 import React from 'react'
+import styled from 'styled-components'
 import EditInfosUser from '../Components/EditInfosUser'
 import EditPassordUser from '../Components/EditPassordUser'
 
 
+
+const Container = styled.div`
+display: flex;
+justify-content: space-around;
+
+`
+
 const EditUser = () => {
 
-
-    
-
-   
-
     return (
-        <div className="edit">
-            <EditPassordUser></EditPassordUser>
-            <EditInfosUser></EditInfosUser>
-        </div>
+        <Container className="edit">
+            <div>
+                <h2>Change Personal informations :</h2>
+                <EditInfosUser></EditInfosUser>
+            </div>
+            <div>
+                <h2>Change password :</h2>
+                <EditPassordUser></EditPassordUser>
+            </div>
+        </Container>
     )
 }
 

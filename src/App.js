@@ -2,6 +2,7 @@ import './App.css';
 import {
   Routes,
   Route,
+  BrowserRouter,
 } from "react-router-dom";
 import Login from './Pages/Login';
 import { GarbageProvider } from './Provider/GarbageProvider';
@@ -17,14 +18,13 @@ import ShowArticles from './Pages/ShowArticles';
 function App() {
   return (
     <GarbageProvider>
+      <BrowserRouter>
       <Header />
       <Routes>
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/home" element={
-          <PrivateRoute>
             <Home />
-          </PrivateRoute>
         } />
         <Route exact path="/user/edit" element={
           <PrivateRoute>
@@ -32,16 +32,13 @@ function App() {
           </PrivateRoute>
         } />
         <Route exact path="/articles" element={
-          <PrivateRoute>
             <Articles />
-          </PrivateRoute>
         } />
         <Route exact path="/articles/:id" element={
-          <PrivateRoute>
             <ShowArticles />
-          </PrivateRoute>
         } />
       </Routes>
+      </BrowserRouter>
     </GarbageProvider>
   );
 }

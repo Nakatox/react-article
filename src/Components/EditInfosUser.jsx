@@ -32,6 +32,7 @@ const EditInfosUser = () => {
                     <input type="text" defaultValue={userInfos.lastname} {...register("lastname", {required:true})}/>
                     <p>BirthDate :</p>
                     <input type="date" defaultValue={userInfos.birthdate} {...register("birthdate", {required:true,valueAsDate: true})}/>
+                    <br />
                     <input type="submit" value="Edit" />
 
                     {errors.firstname && <span>This field is required</span>}
