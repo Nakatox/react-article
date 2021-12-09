@@ -28,15 +28,16 @@ const Map = () => {
                 />
                 {usersPosition.length !== 0 && Object.entries(usersPosition.data).map(([key, data]) => {
                     return(
-
+                        Object.keys(data).length !== 0 &&(
                         <Marker key={key} position={[data.location.latitude, data.location.longitude]}>
                             <Popup>
                                 {data.name}
                             </Popup>
-                        </Marker>
+                        </Marker>)
+                        
+                        
                     )
                 })}
-                
             </MapContainer>
         </Container>
     )
