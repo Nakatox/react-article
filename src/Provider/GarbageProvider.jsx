@@ -11,6 +11,9 @@ export const GarbageProvider = (props) => {
     const [userInfos, setUserInfos] = useState([])
     const [articlesCategory, setArticlesCategory] = useState([])
     const [usersPosition, setusersPosition] = useState([])
+    const [userPosition, setuserPosition] = useState([])
+    const [isLoaded, setisLoaded] = useState(false)
+
 
 
     const getInfosUser = async () => {
@@ -26,6 +29,14 @@ export const GarbageProvider = (props) => {
         setArticlesCategory(data.data)
     }
 
+    if (!isLoaded){
+        navigator.geolocation.getCurrentPosition(function(position) {
+            setuserPosition([position.coords.latitude,position.coords.longitude]);
+            console.log(userPosition);
+            setisLoaded(true)
+        });
+    }
+
     useEffect(()=> {
         getInfosUser()
         getArticlesCategory()
@@ -34,10 +45,10 @@ export const GarbageProvider = (props) => {
             socket.emit("auth", getToken());
         }    
         socket.off('positions').on("positions", (data) => {
-            socket.emit("update_position", {"point_lat":48.858765, "point_lon":2.293762});
+            socket.emit("update_position", {"point_lat":userPosition[0], "point_lon":userPosition[1]});
             setusersPosition(data)
         });
-    }, [])
+    }, [userPosition])
 
     return (
         <GarbageContext.Provider value={{userInfos,setUserInfos, articlesCategory, usersPosition}}>
