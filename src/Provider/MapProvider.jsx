@@ -1,7 +1,6 @@
 import React, {createContext, useState, useEffect} from 'react'
 import { io} from 'socket.io-client'
 import { getToken} from '../Services/API'
-import Marker from 'react-leaflet-animated-marker';
 
 
 export const MapContext = createContext()
@@ -27,7 +26,7 @@ export const MapProvider = (props) => {
             socket.emit("update_position", {"point_lat":userPosition[0], "point_lon":userPosition[1]});
             setusersPosition(data)
         });
-    }, [userPosition])
+    }, [])
 
     return (
         <MapContext.Provider value={{usersPosition}}>
