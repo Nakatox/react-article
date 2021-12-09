@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import styled from 'styled-components'
 import { GarbageContext } from '../Provider/GarbageProvider'
-import 'leaflet/dist/leaflet.css';
+// import 'leaflet/dist/leaflet.css';
 
 
 const Container = styled.div`
@@ -34,8 +34,6 @@ const Map = () => {
                                 {data.name}
                             </Popup>
                         </Marker>)
-                        
-                        
                     )
                 })}
             </MapContainer>

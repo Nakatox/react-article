@@ -18,7 +18,7 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = async (data)=> {
         let response = await LoginAPI(data)
-        if(response.status >= 200 || response.status <= 299){
+        if(response.status >= 200 && response.status <= 299){
             localStorage.setItem('token', response.data.token);
             let infosUser = await GetUserInfoAPI(response.data.token)
             setUserInfos(infosUser.data);
@@ -32,7 +32,7 @@ const Login = () => {
                 draggable: true,
                 progress: undefined,
                 });
-        }else if (response.status >= 400 || response.status<=499 ){
+        }else if (response.status >= 400 && response.status<=499 ){
             toast.error('wrong information', {
                 position: "top-right",
                 autoClose: 5000,

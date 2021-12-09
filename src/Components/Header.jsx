@@ -38,20 +38,35 @@ export const Header = () => {
     }
 
     if (getToken()){
-        return (
+        if(typeof(userInfos)!== "undefined"){ 
+            return (
+                <HeaderS>
+                    <Container className="header_menu" style={{marginRight:'20px'}}>
+                        <Text><a onClick={()=>{logout()}}>Logout</a></Text>
+                        <Text><NavLink to="/home">Home</NavLink></Text>
+                        <Text><NavLink to="/articles">Articles</NavLink></Text>
+                    </Container>
+                    <Container className="user_infos">
+                        <Text>{userInfos.name}</Text>
+                        <Text>{userInfos.lastname}</Text>
+                        <Text><NavLink to="user/edit">Edit</NavLink></Text>
+                    </Container>
+                </HeaderS>
+            )
+        }else{
+            return(
             <HeaderS>
-                <Container className="header_menu" style={{marginRight:'20px'}}>
-                    <Text><a onClick={()=>{logout()}}>Logout</a></Text>
-                    <Text><NavLink to="/home">Home</NavLink></Text>
-                    <Text><NavLink to="/articles">Articles</NavLink></Text>
-                </Container>
-                <Container className="user_infos">
-                    <Text>{userInfos.firstname}</Text>
-                    <Text>{userInfos.lastname}</Text>
-                    <Text><NavLink to="user/edit">Edit</NavLink></Text>
-                </Container>
-            </HeaderS>
-        )
+                    <Container className="header_menu" style={{marginRight:'20px'}}>
+                        <Text><a onClick={()=>{logout()}}>Logout</a></Text>
+                        <Text><NavLink to="/home">Home</NavLink></Text>
+                        <Text><NavLink to="/articles">Articles</NavLink></Text>
+                    </Container>
+                    <Container className="user_infos">
+                        <Text><NavLink to="user/edit">Edit</NavLink></Text>
+                    </Container>
+                </HeaderS>
+            )
+        }
     }else{
         return (
             <HeaderS>

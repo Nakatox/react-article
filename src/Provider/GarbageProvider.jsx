@@ -11,13 +11,13 @@ export const GarbageProvider = (props) => {
     const [userInfos, setUserInfos] = useState([])
     const [articlesCategory, setArticlesCategory] = useState([])
     const [usersPosition, setusersPosition] = useState([])
-    const socket = io("http://edu.project.etherial.fr/");
 
 
     const getInfosUser = async () => {
         let token = getToken()
         if (token !== ""){
             let infosUser = await GetUserInfoAPI(token)
+            console.log(infosUser);
             setUserInfos(infosUser.data);
         }
     }
@@ -30,6 +30,7 @@ export const GarbageProvider = (props) => {
     useEffect(()=> {
         getInfosUser()
         getArticlesCategory()
+        const socket = io("http://edu.project.etherial.fr/");
         if (getToken()){
             socket.emit("auth", getToken());
         }    
@@ -38,8 +39,6 @@ export const GarbageProvider = (props) => {
             setusersPosition(data)
         });
     }, [])
-
-    
 
     return (
         <GarbageContext.Provider value={{userInfos,setUserInfos, articlesCategory, usersPosition}}>
