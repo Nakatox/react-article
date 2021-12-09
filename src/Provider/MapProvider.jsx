@@ -1,6 +1,7 @@
 import React, {createContext, useState, useEffect} from 'react'
 import { io} from 'socket.io-client'
 import { getToken} from '../Services/API'
+import Marker from 'react-leaflet-animated-marker';
 
 
 export const MapContext = createContext()
