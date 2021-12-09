@@ -13,6 +13,7 @@ import PrivateRoute from './Components/PrivateRoute';
 import EditUser from './Pages/EditUser';
 import Articles from './Pages/Articles';
 import ShowArticles from './Pages/ShowArticles';
+import Map from './Components/Map';
 
 
 function App() {
@@ -37,8 +38,12 @@ function App() {
         <Route exact path="/articles/:id" element={
             <ShowArticles />
         } />
+        <Route exact path="/map" element={
+            <Map />
+        } />
       </Routes>
       </BrowserRouter>
+      <Map />
     </GarbageProvider>
   );
 }
