@@ -17,7 +17,6 @@ export const GarbageProvider = (props) => {
         let token = getToken()
         if (token !== ""){
             let infosUser = await GetUserInfoAPI(token)
-            console.log(infosUser);
             setUserInfos(infosUser.data);
         }
     }

@@ -10,7 +10,7 @@ const EditPassordUser = () => {
 
     const editUserPassword = async (data)=> {
         let response = await EditUserPasswordAPI(data)
-        if(response.status >= 200 || response.status <= 299){
+        if(response.status >= 200 && response.status <= 299){
             toast.success('You have updated your password !', {
                 position: "top-right",
                 autoClose: 5000,
@@ -20,8 +20,8 @@ const EditPassordUser = () => {
                 draggable: true,
                 progress: undefined,
                 });
-        }else if (response.status >= 400 || response.status<=499 ){
-            toast.error('wrong information', {
+        }else if (response.status >= 400 && response.status<=499 ){
+            toast.error('wrong informations', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
