@@ -14,36 +14,39 @@ import EditUser from './Pages/EditUser';
 import Articles from './Pages/Articles';
 import ShowArticles from './Pages/ShowArticles';
 import Map from './Components/Map';
+import MapProvider from './Provider/MapProvider';
 
 
 function App() {
   return (
     <GarbageProvider>
-      <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/home" element={
-            <Home />
-        } />
-        <Route exact path="/user/edit" element={
-          <PrivateRoute>
-            <EditUser />
-          </PrivateRoute>
-        } />
-        <Route exact path="/articles" element={
-            <Articles />
-        } />
-        <Route exact path="/articles/:id" element={
-            <ShowArticles />
-        } />
-        <Route exact path="/map" element={
-            <Map />
-        } />
-      </Routes>
-      </BrowserRouter>
-      <Map />
+        <BrowserRouter>
+        <Header />
+          <Routes>
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/register" element={<Register />} />
+            <Route exact path="/home" element={
+                <Home />
+            } />
+            <Route exact path="/user/edit" element={
+              <PrivateRoute>
+                <EditUser />
+              </PrivateRoute>
+            } />
+            <Route exact path="/articles" element={
+                <Articles />
+            } />
+            <Route exact path="/articles/:id" element={
+                <ShowArticles />
+            } />
+            <Route exact path="/map" element={
+                <Map />
+            } />
+          </Routes>
+        </BrowserRouter>
+      <MapProvider>
+        <Map />
+      </MapProvider>
     </GarbageProvider>
   );
 }

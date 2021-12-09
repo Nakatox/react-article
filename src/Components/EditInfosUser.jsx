@@ -12,11 +12,10 @@ const EditInfosUser = () => {
 
     const { register,setValue, handleSubmit, formState: { errors } } = useForm();
 
-    if (userInfos.length !== 0 && !isLoaded) {
+    if (userInfos.length !== 0) {
         setValue("firstname", userInfos.firstname)
         setValue("lastname", userInfos.lastname)
         setValue("birthdate", userInfos.birthdate)
-        setisLoaded(true)
     }
     
 

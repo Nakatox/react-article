@@ -1,8 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import styled from 'styled-components'
-import { GarbageContext } from '../Provider/GarbageProvider'
-// import 'leaflet/dist/leaflet.css';
+import { MapContext } from '../Provider/MapProvider'
 
 
 const Container = styled.div`
@@ -15,7 +14,7 @@ const Container = styled.div`
 
 const Map = () => {
 
-    const {usersPosition} = useContext(GarbageContext)
+    const {usersPosition} = useContext(MapContext)
     useEffect(() => {
         
     }, [usersPosition])

@@ -10,10 +10,6 @@ export const GarbageProvider = (props) => {
 
     const [userInfos, setUserInfos] = useState([])
     const [articlesCategory, setArticlesCategory] = useState([])
-    const [usersPosition, setusersPosition] = useState([])
-    const [userPosition, setuserPosition] = useState([])
-    const [isLoaded, setisLoaded] = useState(false)
-
 
 
     const getInfosUser = async () => {
@@ -29,29 +25,13 @@ export const GarbageProvider = (props) => {
         setArticlesCategory(data.data)
     }
 
-    if (!isLoaded){
-        navigator.geolocation.getCurrentPosition(function(position) {
-            setuserPosition([position.coords.latitude,position.coords.longitude]);
-            console.log(userPosition);
-            setisLoaded(true)
-        });
-    }
-
     useEffect(()=> {
         getInfosUser()
         getArticlesCategory()
-        const socket = io("http://edu.project.etherial.fr/");
-        if (getToken()){
-            socket.emit("auth", getToken());
-        }    
-        socket.off('positions').on("positions", (data) => {
-            socket.emit("update_position", {"point_lat":userPosition[0], "point_lon":userPosition[1]});
-            setusersPosition(data)
-        });
-    }, [userPosition])
+    }, [])
 
     return (
-        <GarbageContext.Provider value={{userInfos,setUserInfos, articlesCategory, usersPosition}}>
+        <GarbageContext.Provider value={{userInfos,setUserInfos, articlesCategory}}>
             {props.children}
         </GarbageContext.Provider>
     )
