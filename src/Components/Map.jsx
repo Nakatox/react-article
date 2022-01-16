@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Popup } from 'react-leaflet'
 import styled from 'styled-components'
 import { MapContext } from '../Provider/MapProvider'
 import ReactLeafletDriftMarker from "react-leaflet-drift-marker"

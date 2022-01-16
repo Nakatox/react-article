@@ -42,7 +42,7 @@ export const Header = () => {
             return (
                 <HeaderS>
                     <Container className="header_menu" style={{marginRight:'20px'}}>
-                        <Text><a onClick={()=>{logout()}}>Logout</a></Text>
+                        <Text><button onClick={()=>{logout()}}>Logout</button></Text>
                         <Text><NavLink to="/home">Home</NavLink></Text>
                         <Text><NavLink to="/articles">Articles</NavLink></Text>
                     </Container>
@@ -57,7 +57,7 @@ export const Header = () => {
             return(
             <HeaderS>
                     <Container className="header_menu" style={{marginRight:'20px'}}>
-                        <Text><a onClick={()=>{logout()}}>Logout</a></Text>
+                        <Text><button onClick={()=>{logout()}}>Logout</button></Text>
                         <Text><NavLink to="/home">Home</NavLink></Text>
                         <Text><NavLink to="/articles">Articles</NavLink></Text>
                     </Container>

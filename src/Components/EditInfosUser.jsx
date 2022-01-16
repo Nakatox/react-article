@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useForm} from "react-hook-form";
 import { GarbageContext } from '../Provider/GarbageProvider';
 import { EditUserAPI } from '../Services/API';
@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const EditInfosUser = () => {
 
     const {userInfos} = useContext(GarbageContext)
-    const [isLoaded, setisLoaded] = useState(false)
 
     const { register,setValue, handleSubmit, formState: { errors } } = useForm();
 

@@ -26,7 +26,7 @@ export const MapProvider = (props) => {
             socket.emit("update_position", {"point_lat":userPosition[0], "point_lon":userPosition[1]});
             setusersPosition(data)
         });
-    }, [])
+    }, [isLoaded])
 
     return (
         <MapContext.Provider value={{usersPosition}}>

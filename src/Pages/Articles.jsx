@@ -11,36 +11,11 @@ import 'react-toastify/dist/ReactToastify.css';
 const Container = styled.div`
 margin: 30px;
 `
-const ContainerButton = styled.div`
-display: flex;
-justify-content: center;
-text-align: center;
-align-items: center;
-`
-const Input = styled.input`
-width: 20px;
-
-`
-
-const Button = styled.button`
-
-    background-color: blueviolet;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 5px;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    cursor: pointer;
-    `
-
 
 const Articles = () => {
-    const [limit, setlimit] = useState(10)
-    const [offset, setoffset] = useState(0)
+
     const [idCategory, setidCategory] = useState(10)
+    const [lastarticles, setlastarticles] = useState([])
 
     const {articlesCategory} = useContext(GarbageContext)
 
@@ -51,10 +26,12 @@ const Articles = () => {
         option.push(value)
     });
 
+
     const { register, handleSubmit } = useForm();
     const onSubmit = async (data)=> {
         let response = await CreateArtcileAPI({"title":data.title, "content":data.content,"article_category_id":idCategory})
         if(response.status >= 200 && response.status <= 299){
+            setlastarticles(response.data.id)
             toast.success('Your article have been added !', {
                 position: "top-right",
                 autoClose: 5000,
@@ -102,18 +79,9 @@ const Articles = () => {
                     </form>
                 </div>
             }
-            {/* <div>
-                <p>Number per page :</p>
-                <input type="range" min="1" max="100" value={limit}  onChange={(e)=>{setlimit(e.target.value)}}/>
-            </div> */}
             <div>
-                <AllArticles limit={limit} offset={offset}></AllArticles>
+                <AllArticles lastarticles={lastarticles}></AllArticles>
             </div>
-            <ContainerButton>
-                <Button onClick={()=>{offset !== 0 ? setoffset(offset - 10): setoffset(0)}}>{'<'}</Button>
-                <Input type="text" value={offset/10} onChange={(e)=>{setoffset(e.target.value)}} />
-                <Button onClick={()=>{setoffset(offset + 10)}}>{'>'}</Button>
-            </ContainerButton>
         </Container>
     )
 }
